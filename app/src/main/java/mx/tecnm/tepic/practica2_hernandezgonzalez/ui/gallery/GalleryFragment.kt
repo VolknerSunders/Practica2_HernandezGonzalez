@@ -4,13 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import mx.tecnm.tepic.practica2_hernandezgonzalez.R
+import kotlinx.android.synthetic.main.fragment_gallery.*
 import mx.tecnm.tepic.practica2_hernandezgonzalez.databinding.FragmentGalleryBinding
-
+import java.io.File
+import java.io.InputStreamReader
+import java.io.OutputStreamWriter
 
 
 class GalleryFragment : Fragment() {
@@ -34,8 +37,7 @@ class GalleryFragment : Fragment() {
         val galleryViewModel =
             ViewModelProvider(this).get(GalleryViewModel::class.java)
         _binding = FragmentGalleryBinding.inflate(inflater, container, false)
-        binding.recyclerView.layoutManager = LinearLayoutManager(activity)
-        binding.recyclerView.adapter = CustomAdapter()
+
         val root: View = binding.root
 
 
@@ -51,11 +53,13 @@ class GalleryFragment : Fragment() {
 
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
-        R.id.Galeria.apply {
 
-        }
+        visualizar.setOnClickListener {
+            binding.recyclerView.layoutManager = LinearLayoutManager(activity)
+            binding.recyclerView.adapter = CustomAdapter()
             layoutManager = LinearLayoutManager(activity)
             adapter = CustomAdapter()
+        }
 
     }
 
@@ -63,4 +67,59 @@ class GalleryFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    fun arregloNombres(): Array<String> {
+        var arreglo = Array(20){""}
+        val filepath = "nombres.txt"
+        var file = File(filepath)
+        if(file.exists()){
+
+            val archivo = InputStreamReader(requireContext().openFileInput("nombres.txt"))
+            var list: MutableList<String> = arreglo.toMutableList()
+
+            archivo.forEachLine {
+                list.add(it)
+            }
+            return list.toTypedArray()
+        }else{
+            val crearArchivo = OutputStreamWriter(requireContext().openFileOutput("nombres.txt", AppCompatActivity.MODE_PRIVATE))
+            crearArchivo.flush()
+            crearArchivo.close()
+            val archivo = InputStreamReader(requireContext().openFileInput("nombres.txt"))
+            var list: MutableList<String> = arreglo.toMutableList()
+
+            archivo.forEachLine {
+                list.add(it)
+            }
+            return list.toTypedArray()
+        }
+    }
+
+    fun arregloCantidades(): Array<String> {
+        var arreglo = Array(20){""}
+        val filepath = "cantidades.txt"
+        var file = File(filepath)
+        if(file.exists()){
+            var archivo = InputStreamReader(requireContext().openFileInput("cantidades.txt"))
+            var list: MutableList<String> = arreglo.toMutableList()
+            archivo.forEachLine {
+                list.add(it)
+            }
+            return list.toTypedArray()
+        }else{
+            val crearArchivo = OutputStreamWriter(requireContext().openFileOutput("cantidades.txt",
+                AppCompatActivity.MODE_PRIVATE
+            ))
+            crearArchivo.flush()
+            crearArchivo.close()
+            val archivo = InputStreamReader(requireContext().openFileInput("cantidades.txt"))
+            var list: MutableList<String> = arreglo.toMutableList()
+            archivo.forEachLine {
+                list.add(it)
+            }
+            return list.toTypedArray()
+        }
+    }
+
+
 }

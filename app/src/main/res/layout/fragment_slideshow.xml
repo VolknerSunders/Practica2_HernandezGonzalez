@@ -9,46 +9,108 @@
     tools:context=".ui.gallery.GalleryFragment"
     android:background="#F5F8C6">
 
-    <pl.droidsonroids.gif.GifImageView
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Insertar fruta nueva"
+        android:padding="10dp"
+        android:textSize="20dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre"
+        />
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/homero"
-        android:id="@+id/logo"
+        android:id="@+id/nombreInsertar"
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Aplicacion creada por Brian Fernando Hernandez Gonzalez"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        android:layout_gravity="center"/>
-
-    <TextView
-        android:layout_width="wrap_content"
+        android:text="Cantidad"
+        />
+    <EditText
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Instituto Tecnologico de Tepic"
+        android:id="@+id/cantidadInsertar"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="nueva fruta"
+        android:id="@id/nuevaFruta"
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Laboratorio de Dispositivos Moviles Grupo A"
+        android:text="Actualizar fruta"
+        android:textSize="20dp"
+        android:padding="10dp"
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="#NoMeRepruebesBenigno"
+        android:text="Nota: solo se actualiza la cantidad, se busca por el nombre"
         />
 
-    <ImageView
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/itt"
+        android:text="Nombre"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/nombreActualizar"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cantidad"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cantidadActualizar"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Actualizar fruta"
+        android:id="@+id/Actualizar"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Eliminar fruta"
+        android:textSize="20dp"
+        android:padding="10dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/nombreEliminar"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Eliminar fruta"
+        android:id="@+id/Eliminar"
         />
 
 </LinearLayout>
